@@ -28,9 +28,9 @@ load(here("data", "weekly", "M4weekly_votes.rda"))
 Column {data-width=650}
 -----------------------------------------------------------------------
 
-### Y1: Vote-matrix probabilities: yearly
+#### Y1: Vote-matrix probabilities: yearly
 
-```{r, fig.height=10}
+```{r, fig.height=10, fig.width=8}
 load(here( "data", "yearly", "yearlym4_votes.rda"))
 
 set.seed(10011)# 1, 10011
@@ -145,7 +145,7 @@ Column {data-width=650}
 
 #### Q1: Vote-matrix probabilities: quarterly
 
-```{r quarterlyvote, fig.height=10}
+```{r quarterlyvote, fig.height=10, fig.width=8}
 set.seed(1)# 1, 10011
 qheatmap <- iheatmapr::main_heatmap(quarterlym4_votes, name="Vote probability") %>%
   add_row_clustering(method="kmeans", k = 5) %>%
@@ -183,7 +183,7 @@ pq <- ggplot(quarterly_m4_clus,
  scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e"))) + 
   theme(axis.text.x = element_text(angle = 90)) + xlab("True class label ") +  ylab("Count")+ 
-  ggtitle("Quarterly Series Composition of clusters by class labels ")
+  ggtitle("Composition of clusters by true class labels")
 
 ggplotly(pq)
 
@@ -234,7 +234,7 @@ plot_ly(dfq, x=~PC1, y=~PC2, z=~PC3, type="scatter3d",
 Column {data-width=650}
 -----------------------------------------------------------------------
 #### M1: Vote-matrix probabilities: monthly
-```{r monthlyvote, fig.height=10}
+```{r monthlyvote, fig.height=10, fig.width=8}
 set.seed(10011)
 mheatmap <- iheatmapr::main_heatmap(monthlym4_votes, name="Vote probability") %>%
   add_row_clustering(method="kmeans", k = 5) %>%
@@ -275,7 +275,7 @@ pm <- ggplot(monthly_m4_clus,
  scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e"))) + 
   theme(axis.text.x = element_text(angle = 90)) + xlab("True class label") +  ylab("Count")+
-  ggtitle("Monthly Series Composition of clusters by class labels")
+  ggtitle("Composition of clusters by true class labels")
 
 ggplotly(pm)
 
@@ -331,7 +331,7 @@ Column {data-width=650}
 
 #### W1: Vote-matrix probabilities: weekly
 
-```{r weeklyvote, fig.height=10}
+```{r weeklyvote, fig.height=10, fig.width=8}
 set.seed(5) #10011
 wheatmap <- iheatmapr::main_heatmap(M4weekly_votes, name="Vote probability") %>%
   add_row_clustering(method="kmeans", k = 5) %>%
@@ -374,7 +374,7 @@ pw <- ggplot(weekly_m4_clus,
  scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e"))) + 
   theme(axis.text.x = element_text(angle = 90)) + xlab("True class label") +  ylab("Count")+
-  ggtitle("Weekly series composition of clusters by true class labels (the best forecast model)")
+  ggtitle("Composition of clusters by true class labels")
 
 ggplotly(pw)
 
@@ -423,7 +423,7 @@ Column {data-width=650}
 -----------------------------------------------------------------------
 #### D1: Vote-matrix probabilities: daily
 
-```{r dailyvote, fig.height=10}
+```{r dailyvote, fig.height=10, fig.width=8}
 set.seed(89) #89
 dheatmap <- iheatmapr::main_heatmap(dailym4_votes, name="Vote probability") %>%
   add_row_clustering(method="kmeans", k = 5) %>%
@@ -447,8 +447,8 @@ row_cluster_daily <- dheatmap@plots@listData$`Row<br>Clusters`@data
 daily_m4_clus <- data.frame(cluster=row_cluster_daily)
 
 daily_m4_clus$trueLabel <- factor(dm4_true_classlabels,
-                                      levels=c("rwd", "stlar", "mstlarima", "mstlets","rw", "snaive",
-                                        "tbats", "wn", "nn", "theta"))
+                                      levels=c("nn", "theta",
+                                               "mstlarima", "mstlets", "rw", "snaive", "tbats", "wn", "rwd", "stlar"))
 
 daily_m4_clus$cluster <- factor(daily_m4_clus$cluster,
                                    c(5, 4, 3, 2, 1))
@@ -460,7 +460,7 @@ pd <- ggplot(daily_m4_clus,
  scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e"))) + 
   theme(axis.text.x = element_text(angle = 90)) + xlab("True class label") +  ylab("Count")+
-  ggtitle("Composition of clusters by class labels")
+  ggtitle("Composition of clusters by true class labels")
 
 ggplotly(pd)
 
@@ -513,7 +513,7 @@ Column {data-width=650}
 -----------------------------------------------------------------------
 #### H1: Vote-matrix probabilities: hourly
 
-```{r hourlyvote, fig.height=10}
+```{r hourlyvote, fig.height=10, fig.width=8}
 set.seed(5) #10011
 hheatmap <- iheatmapr::main_heatmap(hourlym4_votes, name="Vote probability") %>%
   add_row_clustering(method="kmeans", k = 5) %>%
@@ -552,7 +552,7 @@ hp <- ggplot(hourly_m4_clus,
  scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e"))) + 
   theme(axis.text.x = element_text(angle = 90)) + xlab("True class label") +  ylab("Count")+
-  ggtitle("Monthly Series Composition of clusters by class labels")
+  ggtitle("Composition of clusters by true class labels")
 
 ggplotly(hp)
 
