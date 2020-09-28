@@ -50,7 +50,7 @@ Column {data-width=350}{.tabset .tabset-fade}
 
 ### Y2: Composition of clusters by true class labels
 
-```{r}
+```{r, fig.height=8}
 load(here("data", "yearly", "ym4_true_classlabels.rda"))
 
 row_cluster_yearly <- yheatmap@plots@listData$`Row<br>Clusters`@data 
@@ -599,7 +599,7 @@ plot_ly(dfh, x=~PC1, y=~PC2, z=~PC3, type="scatter3d",
 
 FFORMS: Feature-based FORecast Model Selection
 
-![](workflow.png)
+![](workflow.png){height=70%}
 
 
 ```r
