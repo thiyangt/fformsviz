@@ -1,6 +1,6 @@
 ---
 title: "Peeking inside FFORMS!"
-output: 
+output:
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
@@ -69,7 +69,7 @@ py <- ggplot(yearly_m4_clus,
   facet_wrap(~cluster, ncol=1)+
  scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e"))) + 
-  theme(axis.text.x = element_text(angle = 90)) + xlab("True class label (Best forecast model)") + ylab("Count")+ 
+  theme(axis.text.x = element_text(angle = 90)) + xlab("True class label") + ylab("Count")+ 
   ggtitle("Composition of clusters by true class labels")
 
 ggplotly(py)
@@ -182,8 +182,8 @@ pq <- ggplot(quarterly_m4_clus,
   facet_wrap(~cluster, ncol=1) +
  scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e"))) + 
-  theme(axis.text.x = element_text(angle = 90)) + xlab("Class label (Best forecast model)") +  ylab("Count")+
-  ggtitle("Quarterly Series Composition of clusters by class labels (best forecast model)")
+  theme(axis.text.x = element_text(angle = 90)) + xlab("True class label ") +  ylab("Count")+ 
+  ggtitle("Quarterly Series Composition of clusters by class labels ")
 
 ggplotly(pq)
 
@@ -274,8 +274,8 @@ pm <- ggplot(monthly_m4_clus,
   facet_wrap(~cluster, ncol=1) +
  scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e"))) + 
-  theme(axis.text.x = element_text(angle = 90)) + xlab("Class label (Best forecast model)") +  ylab("Count")+
-  ggtitle("Monthly Series Composition of clusters by class labels (best forecast model)")
+  theme(axis.text.x = element_text(angle = 90)) + xlab("True class label") +  ylab("Count")+
+  ggtitle("Monthly Series Composition of clusters by class labels")
 
 ggplotly(pm)
 
@@ -373,7 +373,7 @@ pw <- ggplot(weekly_m4_clus,
   facet_wrap(~cluster, ncol=1) +
  scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e"))) + 
-  theme(axis.text.x = element_text(angle = 90)) + xlab("True class label (the best forecast model)") +  ylab("Count")+
+  theme(axis.text.x = element_text(angle = 90)) + xlab("True class label") +  ylab("Count")+
   ggtitle("Weekly series composition of clusters by true class labels (the best forecast model)")
 
 ggplotly(pw)
@@ -459,8 +459,8 @@ pd <- ggplot(daily_m4_clus,
   facet_wrap(~cluster, ncol=1)+
  scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e"))) + 
-  theme(axis.text.x = element_text(angle = 90)) + xlab("Class label (Best forecast model)") +  ylab("Count")+
-  ggtitle("Composition of clusters by class labels (best forecast model)")
+  theme(axis.text.x = element_text(angle = 90)) + xlab("True class label") +  ylab("Count")+
+  ggtitle("Composition of clusters by class labels")
 
 ggplotly(pd)
 
@@ -551,7 +551,7 @@ hp <- ggplot(hourly_m4_clus,
   facet_wrap(~cluster, ncol=1) +
  scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e"))) + 
-  theme(axis.text.x = element_text(angle = 90)) + xlab("Class label") +  ylab("Count")+
+  theme(axis.text.x = element_text(angle = 90)) + xlab("True class label") +  ylab("Count")+
   ggtitle("Monthly Series Composition of clusters by class labels")
 
 ggplotly(hp)
