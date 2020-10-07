@@ -30,7 +30,7 @@ Column {data-width=650}
 
 #### Y1: Vote-matrix probabilities: yearly
 
-```{r, fig.height=10, fig.width=8}
+```{r, fig.height=9, fig.width=8}
 load(here( "data", "yearly", "yearlym4_votes.rda"))
 
 set.seed(10011)# 1, 10011
@@ -50,7 +50,7 @@ Column {data-width=350}{.tabset .tabset-fade}
 
 ### Y2: Composition of clusters by true class labels
 
-```{r, fig.height=15}
+```{r, fig.height=10, fig.width=6}
 load(here("data", "yearly", "ym4_true_classlabels.rda"))
 
 row_cluster_yearly <- yheatmap@plots@listData$`Row<br>Clusters`@data 
@@ -70,7 +70,7 @@ py <- ggplot(yearly_m4_clus,
  scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e"))) + 
   theme(axis.text.x = element_text(angle = 90)) + xlab("True class label") + ylab("Count")+ 
-  ggtitle("Composition of clusters by true class labels")
+  ggtitle("Composition of clusters by true class labels") + theme(axis.title.x = element_text(hjust=15))
 
 ggplotly(py)
 
@@ -81,7 +81,7 @@ ggplotly(py)
 
 ### Y3: Cluster-wise feature distribution
 
-```{r, fig.height=15}
+```{r, fig.height=15, fig.width=5}
 features_M4Y <-
   readRDS(here( "data", "yearly", "features_M4Y.rds"))
 
