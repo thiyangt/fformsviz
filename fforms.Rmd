@@ -50,7 +50,7 @@ Column {data-width=350}{.tabset .tabset-fade}
 
 ### Y2: Composition of clusters by true class labels
 
-```{r, fig.height=8}
+```{r, fig.height=15}
 load(here("data", "yearly", "ym4_true_classlabels.rda"))
 
 row_cluster_yearly <- yheatmap@plots@listData$`Row<br>Clusters`@data 
@@ -100,7 +100,7 @@ ggplot(fclusy, aes(x=cluster, y=value, fill=cluster)) + geom_boxplot() + facet_w
 
 ### Y4: Visualisation of the instance space
 
-```{r}
+```{r, fig.height=15}
 calculate_pca <- function(feature_dataset){
   pcaY_cal <- prcomp(feature_dataset, center = TRUE, scale = TRUE)
   PCAresults <- data.frame(PC1 = pcaY_cal$x[, 1], 
@@ -162,7 +162,7 @@ Column {data-width=300}{.tabset .tabset-fade}
 ### Q2: Composition of clusters by true class labels
 
 
-```{r}
+```{r, fig.height=15}
 load(here( "data", "quarterly", "qm4_true_classlabels.rda"))
 
 row_cluster_quarterly <- qheatmap@plots@listData$`Row<br>Clusters`@data 
@@ -182,8 +182,7 @@ pq <- ggplot(quarterly_m4_clus,
   facet_wrap(~cluster, ncol=1) +
  scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e"))) + 
-  theme(axis.text.x = element_text(angle = 90)) + xlab("True class label ") +  ylab("Count")+ 
-  ggtitle("Composition of clusters by true class labels")
+  theme(axis.text.x = element_text(angle = 90)) + xlab("True class label") +  ylab("Count") + ggtitle("Composition of clusters by true class labels")
 
 ggplotly(pq)
 
@@ -214,7 +213,7 @@ ggplot(fclusq, aes(x=cluster, y=value, fill=cluster)) + geom_boxplot() + facet_w
 ### Q4: Visualisation of the instance space
 
 
-```{r}
+```{r, fig.height=15}
 
 pca_ref_calc_q <- calculate_pca(features_M4Q)
 dfq <- pca_ref_calc_q$pca_components
@@ -250,7 +249,7 @@ Column {data-width=300}{.tabset .tabset-fade}
 ### M2: Composition of clusters by true class labels
 
 
-```{r}
+```{r, fig.height=15}
 load(here("data", "monthly", "mm4_true_classlabels.rda"))
 
 row_cluster_monthly <- mheatmap@plots@listData$`Row<br>Clusters`@data 
@@ -274,8 +273,7 @@ pm <- ggplot(monthly_m4_clus,
   facet_wrap(~cluster, ncol=1) +
  scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e"))) + 
-  theme(axis.text.x = element_text(angle = 90)) + xlab("True class label") +  ylab("Count")+
-  ggtitle("Composition of clusters by true class labels")
+  theme(axis.text.x = element_text(angle = 90)) + xlab("True class label") +    ylab("Count")+ggtitle("Composition of clusters by true class labels")
 
 ggplotly(pm)
 
@@ -306,7 +304,7 @@ ggplot(fclusm, aes(x=cluster, y=value, fill=cluster)) + geom_boxplot() + facet_w
 
 ### M4: Visualisation of the instance Space
 
-```{r}
+```{r, fig.height=15}
 
 pca_ref_calc_m <- calculate_pca(features_M4M)
 dfm <- pca_ref_calc_m$pca_components
@@ -350,7 +348,7 @@ Column {data-width=300}{.tabset .tabset-fade}
 ### W2: Composition of clusters by true class labels
 
 
-```{r}
+```{r, fig.height=15}
 load(here( "data", "weekly", "wm4_true_classlabels.rda"))
 
 row_cluster_weekly <- wheatmap@plots@listData$`Row<br>Clusters`@data 
@@ -404,7 +402,7 @@ ggplot(fclusw, aes(x=cluster, y=value, fill=cluster)) + geom_boxplot() + facet_w
 
 ### W4: Visualisation of the instance space
 
-```{r}
+```{r, fig.height=15}
 
 pca_ref_calc_w <- calculate_pca(features_M4W)
 dfw <- pca_ref_calc_w$pca_components
@@ -440,7 +438,7 @@ Column {data-width=350}{.tabset .tabset-fade}
 
 ### D2: Composition of clusters by true class labels
 
-```{r}
+```{r, fig.height=15}
 load(here("data", "daily", "dm4_true_classlabels.rda"))
 
 row_cluster_daily <- dheatmap@plots@listData$`Row<br>Clusters`@data 
@@ -489,7 +487,7 @@ ggplot(fclusd, aes(x=cluster, y=value, fill=cluster)) + geom_boxplot() + facet_w
 
 ### D4: Visualisation of the instance space
 
-```{r}
+```{r, fig.height=15}
 
 pca_ref_calc <- calculate_pca(features_M4D)
 df <- pca_ref_calc$pca_components
@@ -530,7 +528,7 @@ Column {data-width=300}{.tabset .tabset-fade}
 ### H2: Composition of clusters by true class labels
 
 
-```{r}
+```{r, fig.height=15}
 load(here("data", "hourly", "hm4_true_classlabels.rda"))
 
 row_cluster_hourly <- hheatmap@plots@listData$`Row<br>Clusters`@data 
@@ -582,7 +580,7 @@ ggplot(fclush, aes(x=cluster, y=value, fill=cluster)) + geom_boxplot() + facet_w
 
 ### H4: Visualisation of the instance space
 
-```{r}
+```{r, fig.height=15}
 
 pca_ref_calc_h <- calculate_pca(features_M4H)
 dfh <- pca_ref_calc_h$pca_components
@@ -599,7 +597,7 @@ plot_ly(dfh, x=~PC1, y=~PC2, z=~PC3, type="scatter3d",
 
 FFORMS: Feature-based FORecast Model Selection
 
-![](workflow.png){height=70%}
+![](workflow.png){height=60%}
 
 
 ```r
