@@ -45,7 +45,7 @@ yheatmap
 ```
 
 
-Column {data-width=200}{.tabset .tabset-fade}
+Column {data-width=100}{.tabset .tabset-fade}
 -----------------------------------------------------------------------
 
 ### Y2: Composition of clusters by true class labels
@@ -94,7 +94,7 @@ ggplot(fclusy, aes(x=cluster, y=value, fill=cluster)) + geom_boxplot() + facet_w
 
 
 
-Column {data-width=500}{.tab}
+Column {data-width=600}{.tab}
 -----------------------------------------------------------------------
 
 
@@ -141,7 +141,7 @@ plot_ly(df, x=~PC1, y=~PC2, z=~PC3, type="scatter3d",
 
 # Quarterly
 
-Column {data-width=650}
+Column {data-width=550}
 -----------------------------------------------------------------------
 
 #### Q1: Vote-matrix probabilities: quarterly
@@ -153,11 +153,12 @@ qheatmap <- iheatmapr::main_heatmap(quarterlym4_votes, name="Vote probability") 
   add_col_clustering(method="kmeans", k=4) %>%
   add_col_labels(size=0.2, textangle = -90) %>%
   add_row_title("Time series (each row corresponds to a single time series)") %>%
-  add_col_title("Class", side="top")  
+  add_col_title("Class", side="bottom", buffer=0.2)  
 qheatmap
 ```
 
-Column {data-width=300}{.tabset .tabset-fade}
+
+Column {data-width=100}{.tabset .tabset-fade}
 -----------------------------------------------------------------------
 
 ### Q2: Composition of clusters by true class labels
@@ -211,6 +212,10 @@ ggplot(fclusq, aes(x=cluster, y=value, fill=cluster)) + geom_boxplot() + facet_w
 ```
 
 
+
+Column {data-width=600}{.tab}
+-----------------------------------------------------------------------
+
 ### Q4: Visualisation of the instance space
 
 
@@ -231,7 +236,8 @@ plot_ly(dfq, x=~PC1, y=~PC2, z=~PC3, type="scatter3d",
 
 
 # Monthly
-Column {data-width=650}
+
+Column {data-width=550}
 -----------------------------------------------------------------------
 #### M1: Vote-matrix probabilities: monthly
 ```{r monthlyvote, fig.height=10, fig.width=8}
@@ -241,11 +247,12 @@ mheatmap <- iheatmapr::main_heatmap(monthlym4_votes, name="Vote probability") %>
   add_col_clustering(method="kmeans", k=4) %>%
   add_col_labels(size=0.2, textangle = -90) %>%
   add_row_title("Time series (each row corresponds to a single time series)") %>%
-  add_col_title("Class", side="top")  
+  add_col_title("Class", side="bottom", buffer=0.2)  
 mheatmap
 ```
 
-Column {data-width=300}{.tabset .tabset-fade}
+
+Column {data-width=100}{.tabset .tabset-fade}
 -----------------------------------------------------------------------
 ### M2: Composition of clusters by true class labels
 
@@ -303,6 +310,10 @@ ggplot(fclusm, aes(x=cluster, y=value, fill=cluster)) + geom_boxplot() + facet_w
 ```
 
 
+
+Column {data-width=600}{.tab}
+-----------------------------------------------------------------------
+
 ### M4: Visualisation of the instance Space
 
 ```{r, fig.height=15}
@@ -325,7 +336,7 @@ plot_ly(dfm, x=~PC1, y=~PC2, z=~PC3, type="scatter3d",
 
 # Weekly
 
-Column {data-width=650}
+Column {data-width=550}
 -----------------------------------------------------------------------
 
 #### W1: Vote-matrix probabilities: weekly
@@ -337,12 +348,13 @@ wheatmap <- iheatmapr::main_heatmap(M4weekly_votes, name="Vote probability") %>%
   add_col_clustering(method="kmeans", k=4) %>%
   add_col_labels(size=0.2, textangle = -90) %>%
   add_row_title("Time series (each row corresponds to a single time series)") %>%
-  add_col_title("Class", side="top")  
+  add_col_title("Class", side="bottom", buffer=0.2)  
 wheatmap
 ```
 
 
-Column {data-width=300}{.tabset .tabset-fade}
+
+Column {data-width=100}{.tabset .tabset-fade}
 -----------------------------------------------------------------------
 
 
@@ -401,6 +413,10 @@ ggplot(fclusw, aes(x=cluster, y=value, fill=cluster)) + geom_boxplot() + facet_w
                        "#7570b3", "#e7298a", "#66a61e")))
 ```
 
+
+Column {data-width=600}{.tab}
+-----------------------------------------------------------------------
+
 ### W4: Visualisation of the instance space
 
 ```{r, fig.height=15}
@@ -418,7 +434,8 @@ plot_ly(dfw, x=~PC1, y=~PC2, z=~PC3, type="scatter3d",
 
 
 # Daily
-Column {data-width=650}
+
+Column {data-width=550}
 -----------------------------------------------------------------------
 #### D1: Vote-matrix probabilities: daily
 
@@ -429,12 +446,13 @@ dheatmap <- iheatmapr::main_heatmap(dailym4_votes, name="Vote probability") %>%
   add_col_clustering(method="kmeans", k=4) %>%
   add_col_labels(size=0.2, textangle = -90) %>%
   add_row_title("Time series (each row corresponds to a single time series)") %>%
-  add_col_title("Class", side="top")  
+  add_col_title("Class", side="bottom", buffer=0.2)  
 dheatmap
 ```
 
 
-Column {data-width=350}{.tabset .tabset-fade}
+
+Column {data-width=100}{.tabset .tabset-fade}
 -----------------------------------------------------------------------
 
 ### D2: Composition of clusters by true class labels
@@ -486,6 +504,10 @@ ggplot(fclusd, aes(x=cluster, y=value, fill=cluster)) + geom_boxplot() + facet_w
 ```
 
 
+
+Column {data-width=600}{.tab}
+-----------------------------------------------------------------------
+
 ### D4: Visualisation of the instance space
 
 ```{r, fig.height=15}
@@ -508,7 +530,8 @@ plot_ly(df, x=~PC1, y=~PC2, z=~PC3, type="scatter3d",
 
 
 # Hourly
-Column {data-width=650}
+
+Column {data-width=550}
 -----------------------------------------------------------------------
 #### H1: Vote-matrix probabilities: hourly
 
@@ -519,12 +542,13 @@ hheatmap <- iheatmapr::main_heatmap(hourlym4_votes, name="Vote probability") %>%
   add_col_clustering(method="kmeans", k=4) %>%
   add_col_labels(size=0.2, textangle = -90) %>%
   add_row_title("Time series (each row corresponds to a single time series)") %>%
-  add_col_title("Class", side="top")  
+  add_col_title("Class", side="bottom", buffer=0.2)  
 hheatmap
 ```
 
 
-Column {data-width=300}{.tabset .tabset-fade}
+
+Column {data-width=100}{.tabset .tabset-fade}
 -----------------------------------------------------------------------
 ### H2: Composition of clusters by true class labels
 
@@ -578,6 +602,9 @@ ggplot(fclush, aes(x=cluster, y=value, fill=cluster)) + geom_boxplot() + facet_w
                        "#7570b3", "#e7298a", "#66a61e")))
 ```
 
+
+Column {data-width=600}{.tab}
+-----------------------------------------------------------------------
 
 ### H4: Visualisation of the instance space
 
