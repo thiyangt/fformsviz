@@ -1,0 +1,9 @@
+name: "FFORMS"
+output_dir: "docs"
+navbar:
+  title: "FFORMS: Feature-based forecast model selection"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
