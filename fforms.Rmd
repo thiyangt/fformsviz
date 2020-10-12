@@ -20,32 +20,32 @@ monthlym4_votes <-readRDS(here("data", "monthly", "monthlym4_votes.rds"))
 load(here("data", "daily", "dailym4_votes.rda"))
 load(here( "data", "hourly", "hourlym4_votes.rda"))
 load(here("data", "weekly", "M4weekly_votes.rda"))
+features_M4Y <-
+  readRDS(here( "data", "yearly", "features_M4Y.rds"))
+load(here( "data", "yearly", "yearlym4_votes.rda"))
 ```
 
 
 # Yearly 
 
-Column {data-width=650}
+Column {data-width=550}
 -----------------------------------------------------------------------
 
 #### Y1: Vote-matrix probabilities: yearly
 
-```{r, fig.height=9, fig.width=8}
-load(here( "data", "yearly", "yearlym4_votes.rda"))
-
+```{r fig.height=10}
 set.seed(10011)# 1, 10011
 yheatmap <- iheatmapr::main_heatmap(yearlym4_votes, name="Vote probability") %>%
   add_row_clustering(method="kmeans", k = 5) %>%
   add_col_clustering(method="kmeans", k=4) %>%
-  add_col_labels(size=0.2, textangle = -90) %>%
+  add_col_labels(size=0.1, textangle = -90) %>%
   add_row_title("Time series (each row corresponds to a single time series)") %>%
-  add_col_title("Class", side="top")  
+ add_col_title("Class", side="bottom", buffer=0.2)  
 yheatmap
 ```
 
 
-
-Column {data-width=350}{.tabset .tabset-fade}
+Column {data-width=200}{.tabset .tabset-fade}
 -----------------------------------------------------------------------
 
 ### Y2: Composition of clusters by true class labels
@@ -63,28 +63,23 @@ yearly_m4_clus$trueLabel <- factor(ym4_true_classlabels,
 yearly_m4_clus$cluster <- factor(yearly_m4_clus$cluster,
                                    c(5, 4, 3, 2, 1))
 
-py <- ggplot(yearly_m4_clus, 
+pyclus <- ggplot(yearly_m4_clus, 
        aes(trueLabel, fill=cluster)) + 
   geom_bar() + 
   facet_wrap(~cluster, ncol=1)+
  scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e"))) + 
-  theme(axis.text.x = element_text(angle = 90)) + xlab("True class label") + ylab("Count")+ 
-  ggtitle("Composition of clusters by true class labels") + theme(axis.title.x = element_text(hjust=15))
+  theme(axis.text.x = element_text(angle = 90)) + ylab("Count")+ 
+  ggtitle("Composition of clusters by true class labels") + theme(axis.title.x = element_text(hjust=15)) + labs( 
+       caption = "X-axis: true class lables, Panels: Row clusters")
 
-ggplotly(py)
-
-
+pyclus
 
 ```
 
-
 ### Y3: Cluster-wise feature distribution
 
-```{r, fig.height=15, fig.width=5}
-features_M4Y <-
-  readRDS(here( "data", "yearly", "features_M4Y.rds"))
-
+```{r fig.height=10, fig.width=6}
 
 fclusy <- data.frame(trend = features_M4Y$trend,
                      diff1y_acf1 = features_M4Y$diff1y_acf1,
@@ -96,6 +91,11 @@ fclusy <- pivot_longer(fclusy, 1:4)
 ggplot(fclusy, aes(x=cluster, y=value, fill=cluster)) + geom_boxplot() + facet_wrap(~name, ncol=1, scales = "free") + scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e")))
 ```
+
+
+
+Column {data-width=500}{.tab}
+-----------------------------------------------------------------------
 
 
 ### Y4: Visualisation of the instance space
@@ -134,6 +134,7 @@ plot_ly(df, x=~PC1, y=~PC2, z=~PC3, type="scatter3d",
         colors    = ~c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e"))
 ```
+
 
 
 
