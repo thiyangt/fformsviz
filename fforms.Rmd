@@ -130,7 +130,7 @@ df$class <- yearly_m4_clus$cluster
 #ggplotly(pcy)
 
 plot_ly(df, x=~PC1, y=~PC2, z=~PC3, type="scatter3d", 
-        mode="markers", color=df$class, opacity=0.7, size=18,
+        mode="markers", color=df$class, opacity=0.1, size=18,
         colors    = ~c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e"))
 ```
@@ -362,12 +362,12 @@ Column {data-width=100}{.tabset .tabset-fade}
 
 
 ```{r, fig.height=15}
-load(here( "data", "weekly", "wm4_true_classlabels.rda"))
+load(here( "data", "weekly", "wm4_true_classlabels2.rda"))
 
 row_cluster_weekly <- wheatmap@plots@listData$`Row<br>Clusters`@data 
 weekly_m4_clus <- data.frame(cluster=row_cluster_weekly)
 
-weekly_m4_clus$trueLabel <- factor(wm4_true_classlabels,
+weekly_m4_clus$trueLabel <- factor(wm4_true_classlabels2,
                                       levels=c("tbats", "SARIMA",  "ARIMA",
   "ARMA/AR/MA", "rw", "snaive", "theta", 
   "wn",  "mstlets", "nn", "rwd", "stlar"
@@ -384,6 +384,7 @@ pw <- ggplot(weekly_m4_clus,
   facet_wrap(~cluster, ncol=1) +
  scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e"))) + 
+  scale_x_discrete(drop=F) + 
   theme(axis.text.x = element_text(angle = 90)) + xlab("True class label") +  ylab("Count")+
   ggtitle("Composition of clusters by true class labels")
 
