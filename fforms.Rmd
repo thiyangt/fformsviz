@@ -88,7 +88,8 @@ fclusy <- data.frame(trend = features_M4Y$trend,
   cluster = yearly_m4_clus$cluster)
 fclusy <- pivot_longer(fclusy, 1:4)
 
-ggplot(fclusy, aes(x=cluster, y=value, fill=cluster)) + geom_boxplot() + facet_wrap(~name, ncol=1, scales = "free") + scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
+ggplot(fclusy, aes(x=cluster, y=value, fill=cluster)) + geom_violin() +
+  geom_boxplot(width=0.1, color="grey", alpha=0.2, outlier.colour = NA)+facet_wrap(~name, ncol=1, scales = "free") + scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e")))
 ```
 
@@ -130,7 +131,7 @@ df$class <- yearly_m4_clus$cluster
 #ggplotly(pcy)
 
 plot_ly(df, x=~PC1, y=~PC2, z=~PC3, type="scatter3d", 
-        mode="markers", color=df$class, opacity=0.1, size=18,
+        mode="markers", color=df$class, opacity=0.7, size=18,
         colors    = ~c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e"))
 ```
@@ -207,7 +208,8 @@ fclusq <- data.frame(trend = features_M4Q$trend,
   cluster = quarterly_m4_clus$cluster)
 fclusq <- pivot_longer(fclusq, 1:4)
 
-ggplot(fclusq, aes(x=cluster, y=value, fill=cluster)) + geom_boxplot() + facet_wrap(~name, ncol=1, scales = "free") + scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
+ggplot(fclusq, aes(x=cluster, y=value, fill=cluster)) + geom_violin() +
+  geom_boxplot(width=0.1, color="grey", alpha=0.2, outlier.colour = NA)+ facet_wrap(~name, ncol=1, scales = "free") + scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e")))
 ```
 
@@ -305,7 +307,8 @@ fclusm <- data.frame(trend = features_M4M$trend,
   cluster = monthly_m4_clus$cluster)
 fclusm <- pivot_longer(fclusm, 1:4)
 
-ggplot(fclusm, aes(x=cluster, y=value, fill=cluster)) + geom_boxplot() + facet_wrap(~name, ncol=1, scales = "free") + scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
+ggplot(fclusm, aes(x=cluster, y=value, fill=cluster)) + geom_violin() +
+  geom_boxplot(width=0.1, color="grey", alpha=0.2, outlier.colour = NA)+ facet_wrap(~name, ncol=1, scales = "free") + scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e")))
 ```
 
@@ -410,7 +413,8 @@ fclusw <- data.frame(trend = features_M4W$trend,
   cluster = weekly_m4_clus$cluster)
 fclusw <- pivot_longer(fclusw, 1:4)
 
-ggplot(fclusw, aes(x=cluster, y=value, fill=cluster)) + geom_boxplot() + facet_wrap(~name, ncol=1, scales = "free") + scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
+ggplot(fclusw, aes(x=cluster, y=value, fill=cluster)) + geom_violin() +
+  geom_boxplot(width=0.1, color="grey", alpha=0.2, outlier.colour = NA) + facet_wrap(~name, ncol=1, scales = "free") + scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e")))
 ```
 
@@ -500,7 +504,8 @@ fclusd <- data.frame(trend = features_M4D$trend,
   cluster = daily_m4_clus$cluster)
 fclusd <- pivot_longer(fclusd, 1:4)
 
-ggplot(fclusd, aes(x=cluster, y=value, fill=cluster)) + geom_boxplot() + facet_wrap(~name, ncol=1, scales = "free") + scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
+ggplot(fclusd, aes(x=cluster, y=value, fill=cluster)) + geom_violin(width=1.2) +
+  geom_boxplot(width=0.1, color="grey", alpha=0.2, outlier.colour = NA) + facet_wrap(~name, ncol=1, scales = "free") + scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e")))
 ```
 
@@ -600,7 +605,8 @@ fclush <- data.frame(trend = features_M4H$trend,
   cluster = hourly_m4_clus$cluster)
 fclush <- pivot_longer(fclush, 1:4)
 
-ggplot(fclush, aes(x=cluster, y=value, fill=cluster)) + geom_boxplot() + facet_wrap(~name, ncol=1, scales = "free") + scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
+ggplot(fclush, aes(x=cluster, y=value, fill=cluster)) + geom_violin() +
+  geom_boxplot(width=0.1, color="grey", alpha=0.2, outlier.colour = NA) + facet_wrap(~name, ncol=1, scales = "free") + scale_fill_manual(values=rev(c("#1b9e77","#d95f02",
                        "#7570b3", "#e7298a", "#66a61e")))
 ```
 
